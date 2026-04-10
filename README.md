@@ -23,7 +23,7 @@ Manage pixels and how they sprinkle their magic across your site.
 1. Ensure **Xophz COMPASS** is installed and active.
 2. Upload `xophz-compass-pixie-dust` to `/wp-content/plugins/`.
 3. Activate through the Plugins menu.
-4. Access via the COMPASS dashboard → **Pixie Dust**.
+4. Access via the My Compass dashboard → **Pixie Dust**.
 
 ## PHP Class Map
 
