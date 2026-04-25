@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Category:          Trajectory
  * Plugin Name:       Xophz Magic Pixie Dust
- * Plugin URI:        http://www.mycompassconsulting.com/
+ * Plugin URI:        https://github.com/HalloftheGods/xophz-compass-pixie-dust
  * Description:       Manage pixels and how they sprinkle their magic across your site. 
  * Version:           26.4.24
  * Author:            Hall of the Gods, Inc.
