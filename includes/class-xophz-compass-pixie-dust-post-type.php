@@ -297,35 +297,37 @@ class Xophz_Compass_Pixie_Dust_Post_Type {
     }
 
     $type = $pixel['type'];
-    $template = isset( self::PIXEL_TEMPLATES[ $type ] ) ? self::PIXEL_TEMPLATES[ $type ] : null;
 
-    // Map placement to location (footer = body_close)
-    $placement = $pixel['placement'];
-    if ( $placement === 'footer' ) {
-      $placement = 'body_close';
-    }
-
-    // Check if this pixel should render at this location
-    if ( $placement !== $location ) {
+    // Handle custom pixels based on their selected placement
+    if ( $type === 'custom' ) {
+      $placement = $pixel['placement'];
+      if ( $placement === 'footer' ) {
+        $placement = 'body_close';
+      }
+      
+      if ( $placement === $location ) {
+        return $pixel['custom_code'];
+      }
       return '';
     }
 
-    if ( $type === 'custom' ) {
-      return $pixel['custom_code'];
-    }
-
+    // Handle predefined templates based on their defined locations
+    $template = isset( self::PIXEL_TEMPLATES[ $type ] ) ? self::PIXEL_TEMPLATES[ $type ] : null;
     if ( ! $template ) {
       return '';
     }
 
-    // Get the appropriate template code for this location
     $code = '';
-    if ( $location === 'head' && isset( $template['head'] ) ) {
+    if ( $location === 'head' && ! empty( $template['head'] ) ) {
       $code = $template['head'];
-    } elseif ( $location === 'body_open' && isset( $template['body_open'] ) ) {
+    } elseif ( $location === 'body_open' && ! empty( $template['body_open'] ) ) {
       $code = $template['body_open'];
-    } elseif ( $location === 'body_close' && isset( $template['body_close'] ) ) {
+    } elseif ( $location === 'body_close' && ! empty( $template['body_close'] ) ) {
       $code = $template['body_close'];
+    }
+
+    if ( empty( $code ) ) {
+      return '';
     }
 
     // Replace placeholder with actual pixel ID
