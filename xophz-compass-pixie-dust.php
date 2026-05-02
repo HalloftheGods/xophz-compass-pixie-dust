@@ -18,7 +18,7 @@
  * Plugin Name:       Xophz Magic Pixie Dust
  * Plugin URI:        https://github.com/HalloftheGods/xophz-compass-pixie-dust
  * Description:       Manage pixels and how they sprinkle their magic across your site. 
- * Version:           26.4.29
+ * Version:           26.5.2.703
  * Author:            Hall of the Gods, Inc.
  * Author URI:        http://www.hallofthegods.com/
  * License:           GPL-2.0+
@@ -38,7 +38,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'XOPHZ_COMPASS_PIXIE_DUST_VERSION', '26.4.29' );
+define( 'XOPHZ_COMPASS_PIXIE_DUST_VERSION', '26.5.2.703' );
 
 /**
  * The code that runs during plugin activation.
