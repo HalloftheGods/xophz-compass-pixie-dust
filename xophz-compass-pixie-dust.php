@@ -54,8 +54,7 @@ function activate_xophz_compass_pixie_dust() {
  * This action is documented in includes/class-xophz-compass-pixie-dust-deactivator.php
  */
 function deactivate_xophz_compass_pixie_dust() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-xophz-compass-pixie-dust-deactivator.php';
-	Xophz_Compass_Pixie_Dust_Deactivator::deactivate();
+	Xophz_Compass_Pixie_Dust::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_xophz_compass_pixie_dust' );
