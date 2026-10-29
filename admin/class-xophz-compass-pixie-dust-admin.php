@@ -151,6 +151,8 @@ class Xophz_Compass_Pixie_Dust_Admin {
 	 * @since    1.0.0
 	 */
 	public function savePixel() {
+		Xophz_Compass_Security::enforce_spa_ajax( 'manage_options' );
+
 		$data = array(
 			'id'          => isset( $_REQUEST['id'] ) ? intval( $_REQUEST['id'] ) : 0,
 			'name'        => isset( $_REQUEST['name'] ) ? sanitize_text_field( $_REQUEST['name'] ) : '',
@@ -158,7 +160,7 @@ class Xophz_Compass_Pixie_Dust_Admin {
 			'pixel_id'    => isset( $_REQUEST['pixel_id'] ) ? sanitize_text_field( $_REQUEST['pixel_id'] ) : '',
 			'enabled'     => isset( $_REQUEST['enabled'] ) ? filter_var( $_REQUEST['enabled'], FILTER_VALIDATE_BOOLEAN ) : false,
 			'placement'   => isset( $_REQUEST['placement'] ) ? sanitize_text_field( $_REQUEST['placement'] ) : 'head',
-			'conditions'  => isset( $_REQUEST['conditions'] ) ? (array) $_REQUEST['conditions'] : array( 'all' ),
+			'conditions'  => isset( $_REQUEST['conditions'] ) ? array_map( 'sanitize_text_field', (array) wp_unslash( $_REQUEST['conditions'] ) ) : array( 'all' ),
 			'custom_code' => isset( $_REQUEST['custom_code'] ) ? wp_unslash( $_REQUEST['custom_code'] ) : '',
 		);
 
@@ -166,6 +168,16 @@ class Xophz_Compass_Pixie_Dust_Admin {
 			Xophz_Compass::output_json( array(
 				'success' => false,
 				'error'   => 'Pixel name is required',
+			) );
+			return;
+		}
+
+		// custom_code is printed raw into the public page, so it needs the same
+		// capability WordPress requires for unfiltered scripts.
+		if ( '' !== $data['custom_code'] && ! current_user_can( 'unfiltered_html' ) ) {
+			Xophz_Compass::output_json( array(
+				'success' => false,
+				'error'   => 'Saving custom code requires the unfiltered_html capability',
 			) );
 			return;
 		}

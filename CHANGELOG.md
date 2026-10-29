@@ -1,5 +1,10 @@
 # Pixie Dust Plugin
 
+## [2026-10-29] - Security
+
+### Fixed
+- `pixie_dust_save_pixel` now requires `manage_options` and a valid nonce, and saving `custom_code` also requires `unfiltered_html`. Before this, any logged-in user could store script that is printed into the `<head>` of every public page. `conditions` values are sanitized (#6778).
+
 ## [2026-01-06] - Initial Implementation
 
 ### Added
