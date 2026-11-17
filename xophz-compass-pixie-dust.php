@@ -19,8 +19,8 @@
  * Plugin URI:        https://github.com/HalloftheGods/xophz-compass-pixie-dust
  * Description:       Manage pixels and how they sprinkle their magic across your site. 
  * Version:           26.9.5
- * Author:            Hall of the Gods, Inc.
- * Author URI:        http://www.hallofthegods.com/
+ * Author:            My Compass Consulting
+ * Author URI:        https://mycompassconsulting.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       xophz-compass-pixie-dust
